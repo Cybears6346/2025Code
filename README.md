@@ -1,7 +1,8 @@
 # 2025Code
 Iterations of working instances of code for 2025 season Reefscape
 
-Each edition should be able to run and compile perfectecly.  However, some features may be missing from editions unless specified
+Each edition serves as a backup and should be able to run and compile perfectecly.  However, some features may be missing from editions unless specified  
+The "Latest" folder contains the code we are actively working on and thus may not run. If you're looking for something that runs please refer to the most recent edition.
 
 FRC Team 6346
 
