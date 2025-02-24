@@ -38,7 +38,7 @@ public class AlgaeWheel {
         
         m_algaewheel.set(speed);
         // m_algaearm.set(-speed);
-        System.out.println(e_Encoder);
+        //System.out.println(e_Encoder);
             // m_elevatorLeft.set(0);
     }
 
