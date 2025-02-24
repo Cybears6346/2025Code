@@ -1,3 +1,3 @@
-I made the pickup method, currently working on the unfinished elevator method
-- Finish elevator method
-- 
+This edition should be fully functional, minus autonomous and special features.
+
+Drive and subsystems are working.
