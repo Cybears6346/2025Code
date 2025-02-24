@@ -1,5 +1,5 @@
 # 2025Code
-Iterations of working instances of code
+Iterations of working instances of code for 2025 season Reefscape
 
 Each edition should be able to run and compile perfectecly.  However, some features may be missing from editions unless specified
 
