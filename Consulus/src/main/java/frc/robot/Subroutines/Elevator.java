@@ -24,7 +24,7 @@ public class Elevator {
 
     // MotorControllerGroup m_winch = new MotorControllerGroup(m_winchLeft, m_winchRight);
 
-    RelativeEncoder e_Encoder = m_elevatorLeft.getEncoder();
+    // RelativeEncoder e_Encoder = m_elevatorLeft.getEncoder(); -- Commented to avoid driver station spam
 
 
     public void Initial()
@@ -53,6 +53,7 @@ public class Elevator {
        
 
     }
+}
 
     // public void StageUp(double speed)
     // {
@@ -136,8 +137,8 @@ public class Elevator {
     //     }
     // }
 
-    public double getEncoder(){
-        //Note: Up negative encoder, Down positive encoder
-        return e_Encoder.getPosition();
-    }
-}
+//     public double getEncoder(){
+//         //Note: Up negative encoder, Down positive encoder
+//         return e_Encoder.getPosition();
+//     }
+// }

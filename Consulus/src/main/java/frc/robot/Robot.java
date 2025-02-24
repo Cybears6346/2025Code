@@ -55,7 +55,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() { //This code runs when the robot powers on
-    CamSub.Initial();//starts the camera streams from the roboRio
+    //CamSub.Initial();//starts the camera streams from the roboRio
     // AutoSub.Initial(Auto_Selector, AutoNames);
     DriveSub.Initial(); //inverts the rear right motor and other setup for the driving controls
     // ArmSub.Initial(); //inverts the left arm motor and other setup for the arm controls
