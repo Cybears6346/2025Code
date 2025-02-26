@@ -37,19 +37,19 @@ public class Elevator {
     
     public void SetSpeed (double speed){
 
-        if (ElevatorBottomLS.get()) {
-            m_elevatorRight.set(-0.5);
-            m_elevatorLeft.set(-0.5);
-            System.out.println("Bottom Elevator LS triggered");
-          }
-          else if (ElevatorTopLS.get()) {
-            m_elevatorRight.set(0.5);
-            m_elevatorLeft.set(0.5);
-            System.out.println("Top Elevator LS triggered");
-          } else {
+        // if (ElevatorBottomLS.get()) {
+        //     m_elevatorRight.set(-0.5);
+        //     m_elevatorLeft.set(-0.5);
+        //     System.out.println("Bottom Elevator LS triggered");
+        //   }
+        //   else if (ElevatorTopLS.get()) {
+        //     m_elevatorRight.set(0.5);
+        //     m_elevatorLeft.set(0.5);
+        //     System.out.println("Top Elevator LS triggered");
+        //   } else {
             m_elevatorLeft.set(speed);
             m_elevatorRight.set(speed);
-          }
+        //   }
        
 
     }
