@@ -13,14 +13,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Subroutines.Camera;
 import frc.robot.Subroutines.Driving;
 // import frc.robot.Subroutines.Pickup;
-import frc.robot.Subroutines.Shooter;
+import frc.robot.Subroutines.
+Shooter;
 // import frc.robot.Subroutines.Winch;
 import frc.robot.Subroutines.Elevator;
 import frc.robot.Subroutines.AlgaeArm;
 import frc.robot.Subroutines.AlgaeWheel;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.Timer;
-
+// Terry is a funny guy
 public class Robot extends TimedRobot {
   public static double kDefaultSpeed = 1.0;
 
