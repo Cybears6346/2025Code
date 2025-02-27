@@ -1,3 +1,5 @@
+Diameter of Elevator Gear Wheel is 1.45 inches
+
 # 2025Code
 Iterations of working instances of code for 2025 season Reefscape
 
