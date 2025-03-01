@@ -41,8 +41,36 @@ public class SparkConfigure {
         m_LeaderRight.configure(rightLeaderConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         m_FollowerRight.configure(rightFollowerConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }
+    public static void winchInit(SparkMax m_winchLeft,SparkMax m_winchRight) {
+        SparkMaxConfig globalWinchLeaderConfig = new SparkMaxConfig();
+        SparkMaxConfig rightFollowerWinchConfig = new SparkMaxConfig();
+            globalWinchLeaderConfig
+                .smartCurrentLimit(50)
+                .idleMode(IdleMode.kBrake);
 
+            rightFollowerWinchConfig
+                .apply(globalWinchLeaderConfig)
+                .follow(m_winchLeft);
 
+        m_winchLeft.configure(globalWinchLeaderConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        m_winchRight.configure(rightFollowerWinchConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    }
+
+    public static void pickupInit(SparkMax m_pickupLeft, SparkMax m_pickupRight)
+    {
+        SparkMaxConfig globalPickupLeaderConfig = new SparkMaxConfig();
+        SparkMaxConfig rightFollowerPickupConfig = new SparkMaxConfig();
+            globalPickupLeaderConfig
+                .smartCurrentLimit(50)
+                .idleMode(IdleMode.kBrake);
+
+            rightFollowerPickupConfig
+                .apply(globalPickupLeaderConfig)
+                .follow(m_pickupLeft);
+
+        m_pickupLeft.configure(globalPickupLeaderConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        m_pickupRight.configure(rightFollowerPickupConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    }
     public static void ElevatorInit(SparkFlex m_elevatorLeft, SparkFlex m_elevatorRight)
     {
         SparkFlexConfig globalElevatorLeaderConfig = new SparkFlexConfig();

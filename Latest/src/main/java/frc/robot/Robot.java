@@ -2,6 +2,9 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
+//Import/ Packages ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 package frc.robot;
 import javax.lang.model.util.ElementScanner14;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -15,6 +18,10 @@ import frc.robot.Subroutines.AlgaeArm;
 import frc.robot.Subroutines.AlgaeWheel;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.Timer;
+
+
+//Initialization ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 public class Robot extends TimedRobot {
   public static double kDefaultSpeed = 1.0;
@@ -43,24 +50,100 @@ public class Robot extends TimedRobot {
 
   }
 
+
+ //Auton  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+  private double startTime; //Following 0 to Autonomous
   @Override
   public void autonomousInit(){
-    //This code starts the autonomous program. 
-    //At the beginning of every autonomous, the winch and arm will move to zero on their limit switches.
-    TimerSub.reset();
-    TimerSub.start();
-    SmartDashboard.putNumber("Timer", TimerSub.get());
-    stopAll();
-    getSelected();
-    SmartDashboard.putString("Auto Command", "zeroWinch");
-    SmartDashboard.putString("Auto Command", "zeroArm");
-    RunAuto();
+    startTime = Timer.getFPGATimestamp();
   }
 
   @Override
   public void autonomousPeriodic(){
-    SmartDashboard.putNumber("Timer", TimerSub.get());
+    double time = Timer.getFPGATimestamp(); //This gets the time since the robot turned on, not how long since automode started EVERY AUTO NEEDS THIS
+// Each Auto number is gona be a different method in the autonomous file later.  The conditionals are just time keepers
+
+
+   // AUTO #1; EVERYTHING BELOW THIS COMMENT IS A BASIC AUTO METHOD.  DRIVE 5 SECONDS, ELEVATOR 2 Seconds, SHOOT 2 Seconds
+
+    // Drive Auto
+    // if (time - startTime < 5){
+    //   DriveSub.ManualDrive(-0.6, 0,true);
+    // } else {
+    //   DriveSub.ManualDrive(-0, 0,true);
+    // }
+
+    // if (time - startTime > 6 && time- startTime < 8){
+    //   ElevatorSub.SetSpeed(-0.6); //MUST BE NEGATIVE, POSITIVE WILL CAUSE IT TO GO DOWN
+    // } else {
+    //   ElevatorSub.SetSpeed(0); //Must be 0 so that it can stop
+    // }
+
+    // if (time - startTime > 8 && time - startTime < 10){
+    //   ShooterSub.SetSpeed(0.6);
+    // } else {
+    //   ShooterSub.SetSpeed(0);
+    // }
+
+//AUTO # 2 THIS WILL RUN ELEVATOR 2 SECONDS, BRING UP ALGAE ARM 0.5 SECONDS, AND SPIN ALGAE WHEELS 3 SECONDS
+  // if (time - startTime > 0 && time- startTime < 2){//this is for L3 AUton
+  //   ElevatorSub.SetSpeed(-0.6); //MUST BE NEGATIVE, POSITIVE WILL CAUSE IT TO GO DOWN
+  // } else {
+  //   ElevatorSub.SetSpeed(0); //Must be 0 so that it can stop
+  // }
+ 
+  // if (time - startTime > 2 && time - startTime < 2.5){
+  //   AlgaeArmSub.SetSpeed(-0.6);
+  // } else {
+  //   AlgaeArmSub.SetSpeed(0);
+  // }
+
+  // if (time - startTime > 3 && time - startTime < 6){
+  //   AlgaeWheelSub.SetSpeed(0.6);
+  // } else {
+  //   AlgaeWheelSub.SetSpeed(0);
+  // }
+  
+//Auto #3 L3 AUTON THIS IS JUST ELEVATOR MOVING UP. ALSO THIS IS SPECIFICALLY FOR 1:60 Gear Ratio with 1 elevator motor moving
+  // if (time - startTime > 0 && time- startTime < 4){//this is for L3 AUton
+  //   ElevatorSub.SetSpeed(-0.6); //MUST BE NEGATIVE, POSITIVE WILL CAUSE IT TO GO DOWN
+  // } else {
+  //   ElevatorSub.SetSpeed(0); //Must be 0 so that it can stop
+  // }
+  // if (time - startTime > 4.5 && time - startTime < 6){
+  //   ShooterSub.SetSpeed(0.6);
+  // } else {
+  //   ShooterSub.SetSpeed(0);
+  // }
+
+  //Auto #4 L2 AUTON
+  if (time - startTime > 0 && time- startTime < 1.2){//this is for L2 AUton
+    ElevatorSub.SetSpeed(-0.6); //MUST BE NEGATIVE, POSITIVE WILL CAUSE IT TO GO DOWN
+  } else {
+    ElevatorSub.SetSpeed(0); //Must be 0 so that it can stop
   }
+  if (time - startTime > 1.5 && time - startTime < 3){
+    ShooterSub.SetSpeed(0.6);
+  } else {
+    ShooterSub.SetSpeed(0);
+  }
+
+//Auto #5 L4 Auton
+if (time - startTime > 0 && time- startTime < 8){//this is for L3 AUton
+  ElevatorSub.SetSpeed(-0.6); //MUST BE NEGATIVE, POSITIVE WILL CAUSE IT TO GO DOWN
+} else {
+  ElevatorSub.SetSpeed(0); //Must be 0 so that it can stop
+}
+// if (time - startTime > 4.5 && time - startTime < 6){
+//   ShooterSub.SetSpeed(0.6);
+// } else {
+//   ShooterSub.SetSpeed(0);
+// }
+
+
+}
  
   @Override
   public void teleopInit(){
@@ -72,6 +155,10 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     //Manual Drive Code: Controlled with Left Y and Right X thumb sticks on the Driver Controller
     DriveSub.ManualDrive(DriverController.getLeftY(), DriverController.getRightX(),true);
+
+
+//SetSpeed for Subsystems ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
+
 
 // Coral shooter 
     ShooterSub.SetSpeed(0);
@@ -110,7 +197,10 @@ public class Robot extends TimedRobot {
     }
   }
 
-//Smartdashboard, Driver Station, Shuffleboard configurations
+
+//Smartdashboard, Driver Station, Shuffleboard configurations ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
   public void RunAuto(){
    
   }
