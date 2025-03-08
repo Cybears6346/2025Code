@@ -87,8 +87,8 @@ public class Robot extends TimedRobot {
     // SmartDashboard.putNumber("Timer", TimerSub.get());
     // AutoSub.doNothingAuto(DriveSub);
     // AutoSub.leaveStartingPositionAuto(DriveSub);
-    AutoSub.scoreL2Auto(DriveSub, ElevatorSub);
-    // AutoFinished = true;
+    AutoSub.scoreL1Auto(DriveSub, ShooterSub);
+    // AutoFiniethed = true;
     // stopAll();
     // getSelected();
     // SmartDashboard.putString("Auto Command", "zeroWinch");
@@ -127,7 +127,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     //Manual Drive Code: Controlled with Left Y and Right X thumb sticks on the Driver Controller
-    DriveSub.ManualDrive(DriverController.getLeftY() * 0.7, DriverController.getRightX() * 0.7,true);
+    DriveSub.ManualDrive(DriverController.getLeftY() * 0.8, DriverController.getRightX() * 0.8,true);
     
     //Winch Code: Controlled with the Right Y thumb stick on the Arm Controller
     // if(Math.abs(ArmController.getRightY())>0.25)

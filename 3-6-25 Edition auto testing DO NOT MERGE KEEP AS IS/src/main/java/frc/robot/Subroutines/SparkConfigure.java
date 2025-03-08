@@ -152,9 +152,9 @@ public class SparkConfigure {
     
     }
 
-    public static void AlgaeArmInit(SparkFlex m_wheel)
+    public static void AlgaeArmInit(SparkMax m_wheel)
     {
-        SparkFlexConfig globalAlgaeArmLeaderConfig = new SparkFlexConfig();
+        SparkMaxConfig globalAlgaeArmLeaderConfig = new SparkMaxConfig();
         globalAlgaeArmLeaderConfig
                 .smartCurrentLimit(50)
                 .idleMode(IdleMode.kBrake)

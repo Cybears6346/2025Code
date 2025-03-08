@@ -3,7 +3,7 @@ package frc.robot.Subroutines;
 
 import com.revrobotics.spark.SparkLowLevel;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
-import com.revrobotics.spark.SparkFlex;
+import com.revrobotics.spark.SparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.spark.SparkRelativeEncoder;
 import edu.wpi.first.wpilibj.Timer;
@@ -14,10 +14,10 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AlgaeWheel {
-    SparkFlex m_algaewheel = new SparkFlex(10, MotorType.kBrushless); //states the existance of a sparkflex with a CANid of 10
+    SparkMax m_algaewheel = new SparkMax(10, MotorType.kBrushless); //states the existance of a sparkflex with a CANid of 10
     // SparkFlex m_algaearm = new SparkFlex(9, MotorType.kBrushless); 
    
-    SparkFlex[] CANIDs= {m_algaewheel};
+    SparkMax[] CANIDs= {m_algaewheel};
 
     RelativeEncoder e_Encoder = m_algaewheel.getEncoder();
     DigitalInput LS_Elevator = new DigitalInput(2);
@@ -26,7 +26,7 @@ public class AlgaeWheel {
     public void Initial()
     {
         // SparkConfigure.AlgaeWheelInit(m_algaewheel);
-        SparkConfigure.AlgaeWheelInit(m_algaewheel);
+        SparkConfigure.AlgaeArmInit(m_algaewheel);
         // m_elevatorLeft.setInverted(true);
         // SmartDashboard.putBoolean("Winch LS", LS_Elevator.get());
     }
